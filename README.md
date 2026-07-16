@@ -41,32 +41,64 @@ honesty & verification rules, and multi-message handling.
 
 ## Before / after
 
-The same event — a refactor finished, and testing surfaced a bug:
+The same session — a webhook migration that finished, surfaced a
+production bug, and needs two decisions:
 
 **Before:**
 
-> I've completed the refactoring of the authentication module as
-> requested. I began by analyzing the existing token validation flow in
-> src/auth/validate.ts, which was using the deprecated jwt-simple
-> library, and replaced it with jose, updating all call sites
-> accordingly. I also consolidated the middleware chain… *(nine more
-> lines)* …Note that while testing I noticed session expiry appears to
-> use local time rather than UTC, which could be worth investigating at
-> some point.
+> I've finished working on the webhook migration we discussed. I went
+> through all six of the payment webhook handlers and moved them over to
+> the v2 events API, which required updating the signature verification
+> middleware and the retry logic — retries now use exponential backoff
+> with jitter instead of the fixed 30-second interval, which should be
+> gentler on the upstream service. After that I ran the full test suite
+> and most things pass now (43 of the 45 webhook tests). I looked into
+> the two failing tests and they don't appear to be related to my
+> changes — as far as I can tell the refund webhook's signature check
+> has been comparing against the wrong header since the March refactor,
+> so refund events have probably been silently dropped in production
+> for a while. I also replayed 500 staged events against the new
+> handlers and they all went through. Let me know how you'd like to
+> proceed with rolling this out — we could enable it for a percentage of
+> traffic first, or just switch everything over, and I wasn't sure
+> whether you wanted me to fix the refund signature issue as part of
+> this work or treat it separately. At some point it might also be worth
+> adding alerting on webhook delivery failures, which would have caught
+> the refund thing much earlier.
 
 **After:**
 
 > ## TLDR
-> Auth refactor done and verified — 47/47 tests pass. 👾 Testing
-> surfaced a pre-existing bug: session expiry uses local time, not UTC —
-> users west of UTC stay logged in hours too long.
+> ⛳️ Webhook migration done and verified — nothing goes live until you
+> pick a rollout below. 👾 Testing exposed a pre-existing production
+> bug: 🔹 refund events have been silently dropped since March (the
+> signature check reads the wrong header).
+>
+> All six payment webhooks now use the v2 API, with exponential backoff
+> replacing fixed 30s retries. The two test failures are the refund bug,
+> not the migration.
+>
+> | Check | Result |
+> |---|---|
+> | Webhook test suite | 43/45 pass (2 = pre-existing refund bug) |
+> | Staging replay | 500/500 events delivered |
 >
 > 🚧 Needs you
-> - Expiry bug — A. fix now (recommended; one line + a test) · B. park it.
+> - #1 - Refund bug — A. fix now (recommended; two lines + a regression
+>   test, rides this branch) · B. park it.
+> - #2 - Rollout — A. enable for 10% of traffic (recommended) ·
+>   B. switch all traffic · C. hold until #1 is decided.
+>
+> 📋 Parked
+> - #3 - Failure alerting — would have caught the refund bug in March;
+>   recorded in the backlog. A. add this week · B. leave parked.
 
-Same information. One version buries a session-security bug in line
-twelve of a paragraph about libraries; the other makes it impossible to
-miss and one keystroke to act on.
+Same information — every fact in the second version is in the first.
+But the first buries "refunds are silently dropping in production" in
+the middle of a paragraph about retry intervals, then ends on three
+questions you have to untangle yourself. The second makes the bug
+unmissable, the evidence scannable, and every decision a two-character
+reply: `1A, 2A, 3B`.
 
 ## Install
 
