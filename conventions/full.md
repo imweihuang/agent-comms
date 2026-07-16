@@ -23,6 +23,11 @@ Five standing markers, one meaning each. This list is CAPPED at five — no
 other emoji acquires standing meaning unless I add it here. The cap is the
 feature: overuse kills every signal.
 
+Scope: marker rules govern chat replies to me — they do not restyle
+generated artifacts, code, or machine-readable/protocol-bound output
+(same scope rule as the register below); glyph hygiene applies when such
+text is quoted into chat.
+
 - 🚧 — **blocked on ME, now**: my human action is required before the next
   affected step — a decision, an approval, a credential, a go-ahead. ONLY
   for items blocked on me — never warnings, risks, FYIs, or suggestions

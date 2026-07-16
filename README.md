@@ -27,9 +27,9 @@ dumps hiding the one thing you needed to know.
 
 That's the whole minimal tier. Two bigger tiers add teeth:
 [standard](conventions/standard.md) (full marker semantics — the
-one-reply test, lettered A/B/C decision asks, the reporting register) and
-[full](conventions/full.md) (honesty & verification rules, multi-message
-handling).
+one-reply test, lettered A/B/C decision asks — plus the reporting
+register) and [full](conventions/full.md) (standard + honesty &
+verification rules + multi-message handling).
 
 ## Install
 
@@ -46,30 +46,46 @@ Paste this repo's URL to your agent and say:
 
 Your agent will interview you (which tier, who reads your reports), write
 one canonical doc at `~/.agent-comms/conventions.md`, and wire it into
-every agent config on your machine — imported by `CLAUDE.md`, inlined
-into `AGENTS.md` (which has no import mechanism) between managed markers
-so re-running updates cleanly.
+your agent configs — an `@import` in `~/.claude/CLAUDE.md` (Claude Code),
+a managed marker block inlined into `~/.codex/AGENTS.md` (Codex — it has
+no import mechanism). Re-running syncs cleanly and never overwrites your
+customized doc. It wires the configs it finds (or that you name) — it
+doesn't claim to discover every agent or project-level config.
+
+Prudence note: you're asking an agent to follow instructions from the
+internet and edit your config files. The installer is one short readable
+file — [skills/setup-agent-comms/SKILL.md](skills/setup-agent-comms/SKILL.md) —
+inspect it first, and prefer a tagged release over `main`.
 
 ### Manual
 
 ```bash
 git clone https://github.com/findmyrain/agent-comms
-cp -r agent-comms/skills/setup-agent-comms ~/.claude/skills/   # Claude Code
-cp -r agent-comms/skills/setup-agent-comms ~/.codex/skills/    # Codex
+cd agent-comms
+mkdir -p ~/.agent-comms ~/.claude/skills ~/.codex/skills
+cp -r conventions ~/.agent-comms/templates                     # templates the skill reads
+cp -r skills/setup-agent-comms ~/.claude/skills/               # Claude Code
+cp -r skills/setup-agent-comms ~/.codex/skills/                # Codex
 ```
 
-Then tell your agent: `set up my communication conventions`.
+Then tell your agent: `set up my communication conventions` (restart the
+agent first if it caches its skill list at startup). Commands are for
+macOS/Linux; on Windows, copy the same folders to the same destinations.
 
 <!-- FOR AGENTS ------------------------------------------------------
 If a user pointed you at this repo and asked you to install it:
 1. Read skills/setup-agent-comms/SKILL.md and follow it exactly — it is
-   the installer (interview -> write ~/.agent-comms/conventions.md ->
-   wire CLAUDE.md import + AGENTS.md managed block -> verify).
-2. Also copy skills/setup-agent-comms/ into the user's skills
-   directories (~/.claude/skills/ and/or ~/.codex/skills/) so future
-   updates can be run by name.
-3. Everything must be idempotent: search before adding an import line;
-   replace between managed markers, never append a second copy.
+   the installer (state check -> interview -> write
+   ~/.agent-comms/conventions.md -> wire CLAUDE.md import + AGENTS.md
+   managed block -> verify). Honor its state machine: if the canonical
+   doc already exists, sync wiring only — never overwrite the user's doc.
+2. Copy conventions/ to ~/.agent-comms/templates/ and
+   skills/setup-agent-comms/ into the user's skills directories
+   (~/.claude/skills/ and/or ~/.codex/skills/) so future runs work
+   without this checkout.
+3. Everything must be idempotent and fail-closed: exact-match the import
+   line before adding; validate managed markers before replacing between
+   them; on malformed markers, stop and show the user.
 4. Do not modify anything else in the user's config files.
 --------------------------------------------------------------------->
 
@@ -109,9 +125,15 @@ tiles, tables in chat), inline rendering is fine — the invariant is that
 the takeaway is always stated in plain text, and no decision or risk
 lives only inside a visual.
 
-**Does this restyle my code, commits, or PRs?** No. The register governs
-chat replies to you. Artifacts (code, docs, PR bodies, machine-readable
-output) keep their own conventions.
+**Does this restyle my code, commits, or PRs?** No. Every tier scopes
+itself to chat replies to you. Artifacts (code, docs, PR bodies,
+machine-readable output) keep their own conventions, and an explicit
+format request from you always wins.
+
+**What if emoji don't render in my terminal?** The glyphs are the default
+skin, not the contract. Swap them for ASCII tags with the same one
+meaning each — `[BLOCKED]`, `[PARKED]`, `[DONE]`, `[BUG]`, `[KEY]` — and
+keep the cap of five.
 
 ## License
 

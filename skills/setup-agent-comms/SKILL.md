@@ -6,84 +6,107 @@ description: Set up agent communication conventions — a shared canon doc that 
 # Setup: agent communication conventions
 
 You are installing a communication-conventions canon for the user. The
-result: one canonical doc, loaded by every coding agent on this machine
-(Claude Code via CLAUDE.md import; Codex via AGENTS.md), so all agents
-report the same way.
+result: one canonical doc, loaded by every wired coding agent on this
+machine (Claude Code via CLAUDE.md import; Codex via AGENTS.md), so those
+agents report the same way.
 
-## Step 1 — Interview (keep it to 3 questions, offer defaults)
+## Step 0 — Locate templates and determine state
 
-Ask, with a recommended default for each:
+**Templates** live at, in order of preference:
+1. `~/.agent-comms/templates/<tier>.md` (placed there by install), or
+2. `conventions/<tier>.md` in a checkout of this repo, if you are running
+   from one.
 
-1. **Tier** — which conventions set?
-   - `minimal` — 3 rules (~20 lines): TLDR-first, five markers, dense
-     material off-chat. (recommended for first-time setup)
-   - `standard` — full marker semantics + the reporting register (~90
-     lines).
-   - `full` — standard + honesty/verification rules + multi-message
-     stretch handling (~150 lines).
-2. **Reader** — who reads the reports? (default: "the project owner,
-   non-implementation detail" — used to tune the register's voice; a
-   highly technical reader may want evidence pasted rather than linked)
-3. **Which agents** — Claude Code, Codex, or both? (default: every agent
-   config found on the machine)
+If neither exists, ask the user where they cloned the repo — do not
+invent template content from memory.
+
+**State** — check for `~/.agent-comms/conventions.md`:
+
+- **A. Missing → fresh install.** Do the interview (Step 1), seed the doc
+  from the chosen template (Step 2), wire agents (Step 3).
+- **B. Exists → sync run.** Do NOT modify the canonical doc — it is the
+  user's source of truth and may contain their customizations. Skip the
+  interview and go straight to Step 3, regenerating wiring from the
+  CURRENT canonical doc.
+- **C. User explicitly asked to change tier or reset.** Show a diff
+  between the chosen template and the current canonical doc, get explicit
+  confirmation, then overwrite and re-wire. Never enter this state
+  implicitly.
+
+## Step 1 — Interview (fresh install only; 3 questions, offer defaults)
+
+1. **Tier** — `minimal` (3 rules; recommended first) · `standard`
+   (full marker semantics + reporting register) · `full` (standard +
+   honesty/verification + multi-message handling).
+2. **Reader** — who reads the reports? (default: "the project owner —
+   decisions, not implementation detail". A highly technical reader may
+   want evidence pasted rather than linked; tune the register wording
+   accordingly. The minimal tier has no register section — skip tuning
+   for it.)
+3. **Which agents** — Claude Code, Codex, or both? (default: every
+   global config found: `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`.)
 
 If the user already answered any of these in their request, don't re-ask.
 
-## Step 2 — Create the shared canon doc
+## Step 2 — Seed the canonical doc (fresh install or explicit reset only)
 
-Copy the chosen tier's template from this skill's repo
-(`conventions/<tier>.md`) to the canonical path:
+Copy the chosen tier template to `~/.agent-comms/conventions.md`
+(create the directory if needed), applying any reader tuning as light
+edits to the register section — do not restructure the doc.
+
+## Step 3 — Wire each agent (idempotent, fail-closed)
+
+**Claude Code** (`~/.claude/CLAUDE.md`):
+
+- Check for the EXACT import line (exact-match this full line — do not
+  match on the substring "agent-comms", which also appears in pasted
+  template copies):
+
+  ```
+  @~/.agent-comms/conventions.md
+  ```
+
+- Absent → append it at the end of the file. Present → leave it alone.
+- **Migration check**: if the file contains an `agent-comms tier:`
+  marker comment, the user previously pasted a template directly
+  (zero-install path). Show them the pasted block and offer to remove it
+  in favor of the import — a stale pasted copy alongside the import means
+  two drifting versions.
+
+**Codex** (`~/.codex/AGENTS.md`) — no import mechanism, so inline the
+canonical doc's content between managed markers:
 
 ```
-~/.agent-comms/conventions.md
-```
-
-Create the directory if needed. If the file ALREADY exists, this is an
-update: show the user a diff of what would change and confirm before
-overwriting. Apply any reader-tuning from Step 1 by lightly editing the
-register section (do not restructure the doc).
-
-## Step 3 — Wire each agent
-
-**Claude Code** (`~/.claude/CLAUDE.md`): add this import line if not
-already present (search for `agent-comms` before adding — never duplicate):
-
-```
-@~/.agent-comms/conventions.md
-```
-
-**Codex** (`~/.codex/AGENTS.md`): AGENTS.md has no import mechanism, so
-inline the doc between managed markers. If the markers already exist,
-replace the content between them; never append a second copy:
-
-```
-<!-- agent-comms:begin (managed - do not edit between markers; edit ~/.agent-comms/conventions.md and re-run setup-agent-comms) -->
-...doc content...
+<!-- agent-comms:begin (managed - edit ~/.agent-comms/conventions.md and re-run setup-agent-comms) -->
+...content of ~/.agent-comms/conventions.md...
 <!-- agent-comms:end -->
 ```
 
-**Other agents**: if the user names another agent with a global config
-file, apply the same pattern — import where supported, managed inline
-block where not.
+Fail-closed rules — count the markers BEFORE writing:
+- Exactly 0 `begin` and 0 `end` → append a new block at the end.
+- Exactly 1 `begin` and 1 `end`, in that order → replace the content
+  between them with the current canonical doc.
+- ANYTHING else (duplicates, reversed, orphaned, nested) → STOP. Show
+  the user what you found and let them repair it. Never guess, never
+  write into a malformed file.
+- Run the same migration check for a pasted `agent-comms tier:` block.
+
+**Other agents**: only if the user names one, apply the same pattern —
+import where supported, managed block where not. Do not claim to have
+covered agents you didn't wire.
+
+Never remove or reorder the user's existing config content. After each
+edit, re-read the file and confirm the result is exactly one import line
+/ one well-formed managed block.
 
 ## Step 4 — Verify and demonstrate
 
-1. Re-read each wired file and confirm: exactly one import line / one
-   managed block, correct path, no duplicates.
-2. Show the user a short sample reply formatted under the new
-   conventions (a `## TLDR` + one 🚧 example with lettered options), so
-   they see the effect immediately.
-3. Tell them the one-line update path: edit
-   `~/.agent-comms/conventions.md`, then re-run this skill to re-sync the
-   inlined copies.
-
-## Rules
-
-- Idempotent, always: running this twice must produce the same result as
-  running it once. Search before adding; replace between markers, never
-  append.
-- Never remove or reorder the user's existing CLAUDE.md / AGENTS.md
-  content. Add the import at the end of the file unless the user says
-  otherwise.
-- If a wired file is under version control, tell the user what changed so
-  they can commit it.
+1. Confirm each wired file: correct path, no duplicates, no pasted-copy
+   leftovers.
+2. Show the user a short sample reply formatted under THEIR tier — a
+   `## TLDR` plus one or two markers used correctly. Only demonstrate
+   lettered A/B/C options if their tier defines them (standard/full).
+3. Tell them the update path: edit `~/.agent-comms/conventions.md`, then
+   re-run this skill — a sync run re-inlines AGENTS.md and never touches
+   their doc. Suggest committing config files that are under version
+   control.
