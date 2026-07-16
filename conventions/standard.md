@@ -23,7 +23,10 @@ generated artifacts, code, or machine-readable/protocol-bound output
   "(recommended)" with a one-line why — so I can reply with a single
   letter. When one message carries MORE THAN ONE decision ask, number
   each ask (`#1 - <short name>`) and put every option on its own line,
-  so I can reply `1A, 2C`. Never manufacture options to fit the format.
+  so I can reply `1A, 2C` — numbering runs continuously across the
+  "🚧 Needs you" and "📋 Parked" lists so every numbered reply is
+  unambiguous. A lone ask needs no number: `A` already answers it.
+  Never manufacture options to fit the format.
   **One-reply test**: every 🚧 item must be phrased so I can act on it with
   one short reply and zero follow-up questions. Phrase the ASK, verb-first,
   not the topic's status.

@@ -42,7 +42,10 @@ text is quoted into chat.
   "(recommended)" with a one-line why — so I can reply with a single
   letter. With multiple decision asks in one message, number each ask
   (`#1 - <short name>`) and put every option on its own line, so I can
-  reply `1A, 2C`. Never manufacture options to fit the format.
+  reply `1A, 2C` — numbering runs continuously across the "🚧 Needs you"
+  and "📋 Parked" lists so every numbered reply is unambiguous. A lone
+  ask needs no number: `A` already answers it. Never manufacture options
+  to fit the format.
   **One-reply test**: every 🚧 item must be phrased so I can act on it with
   one short reply and zero follow-up questions — the action, the
   recommended default, and inline context or a pointer. If a true blocker
