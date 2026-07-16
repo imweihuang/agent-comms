@@ -1,6 +1,6 @@
 # Agent communication conventions (full)
 
-<!-- agent-comms tier: full | https://github.com/findmyrain/agent-comms -->
+<!-- agent-comms tier: full | https://github.com/imweihuang/agent-comms -->
 
 Everything in the standard tier, plus honesty rules and multi-message
 handling.

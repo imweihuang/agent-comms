@@ -45,7 +45,7 @@ Copy [conventions/minimal.md](conventions/minimal.md) into your
 
 Paste this repo's URL to your agent and say:
 
-> install https://github.com/findmyrain/agent-comms
+> install https://github.com/imweihuang/agent-comms
 
 Your agent will interview you (which tier, who reads your reports), write
 one canonical doc at `~/.agent-comms/conventions.md`, and wire it into
@@ -63,7 +63,7 @@ inspect it first, and prefer a tagged release over `main`.
 ### Manual
 
 ```bash
-git clone https://github.com/findmyrain/agent-comms
+git clone https://github.com/imweihuang/agent-comms
 cd agent-comms
 mkdir -p ~/.agent-comms ~/.claude/skills ~/.codex/skills
 cp -r conventions ~/.agent-comms/templates                     # templates the skill reads

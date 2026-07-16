@@ -1,6 +1,6 @@
 # Agent communication conventions (standard)
 
-<!-- agent-comms tier: standard | https://github.com/findmyrain/agent-comms -->
+<!-- agent-comms tier: standard | https://github.com/imweihuang/agent-comms -->
 
 ## Response markers (all responses)
 

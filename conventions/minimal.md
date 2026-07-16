@@ -1,6 +1,6 @@
 # Agent communication conventions (minimal)
 
-<!-- agent-comms tier: minimal | https://github.com/findmyrain/agent-comms -->
+<!-- agent-comms tier: minimal | https://github.com/imweihuang/agent-comms -->
 
 Scope: these rules govern chat replies to me. They do NOT restyle
 machine-readable or protocol-bound output, generated artifacts (code,
