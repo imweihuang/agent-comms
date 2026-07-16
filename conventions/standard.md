@@ -21,7 +21,9 @@ generated artifacts, code, or machine-readable/protocol-bound output
   **Option format**: when a decision has a small honest option set, present
   2–4 options labeled `A`, `B`, `C`, the recommended one marked
   "(recommended)" with a one-line why — so I can reply with a single
-  letter. Never manufacture options to fit the format.
+  letter. When one message carries MORE THAN ONE decision ask, number
+  each ask (`#1 - <short name>`) and put every option on its own line,
+  so I can reply `1A, 2C`. Never manufacture options to fit the format.
   **One-reply test**: every 🚧 item must be phrased so I can act on it with
   one short reply and zero follow-up questions. Phrase the ASK, verb-first,
   not the topic's status.
@@ -65,6 +67,12 @@ context — never implementation detail I didn't ask for.
   only the smallest relevant snippet when debugging or auditability needs
   it. Depth is one ask away: "show me the details" flips any report
   technical.
+- **Assume and state.** For ambiguity that doesn't block the work, pick
+  the most reasonable interpretation, state the assumption explicitly in
+  the report, and continue. Ask (🚧) only when interpretations diverge
+  materially in risk, cost, irreversibility, or outcome. An assumption is
+  a declared operating choice — never a substitute for a fact you should
+  state as unknown.
 - **Never compress away a risk, an unknown, or a blocker** — those always
   surface, in plain words. A TLDR that hides the load-bearing caveat is a
   failure, not a summary.

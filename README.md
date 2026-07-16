@@ -26,10 +26,11 @@ dumps hiding the one thing you needed to know.
    doesn't.
 
 That's the whole minimal tier. Two bigger tiers add teeth:
-[standard](conventions/standard.md) (full marker semantics — the
-one-reply test, lettered A/B/C decision asks — plus the reporting
-register) and [full](conventions/full.md) (standard + honesty &
-verification rules + multi-message handling).
+[standard](conventions/standard.md) (marker semantics — the one-reply
+test, lettered A/B/C and numbered multi-ask decision formats — plus the
+reporting register) and [full](conventions/full.md) (standard + honesty
+& verification rules + multi-message handling + deeper marker
+discipline: classify-at-the-event, parked-item options, glyph hygiene).
 
 ## Install
 
@@ -132,8 +133,14 @@ format request from you always wins.
 
 **What if emoji don't render in my terminal?** The glyphs are the default
 skin, not the contract. Swap them for ASCII tags with the same one
-meaning each — `[BLOCKED]`, `[PARKED]`, `[DONE]`, `[BUG]`, `[KEY]` — and
-keep the cap of five.
+meaning each — `[BLOCKED]`, `[PARKED]`, `[MILESTONE]`, `[BUG]`, `[KEY]` —
+and keep the cap of five.
+
+## Related
+
+[agent-style](https://github.com/yzhao062/agent-style) — sentence-level
+writing rules for agent prose. Separate project, optional; where the two
+conflict, this kit's structural and marker rules take precedence.
 
 ## License
 
