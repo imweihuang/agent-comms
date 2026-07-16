@@ -123,6 +123,15 @@ If a user pointed you at this repo and asked you to install it:
 
 ## Why this works
 
+As agents get faster and run in parallel, the scarce resource stops
+being the code and becomes your attention: every session still ends in a
+human reading, deciding, and unblocking. Reports you re-read, decisions
+you have to reverse-engineer out of prose, ten sessions each asking
+questions their own way — that's the new bottleneck. These conventions
+are attention engineering: every rule exists to make the human step
+faster — scan five glyphs instead of parsing paragraphs, answer a
+decision with one letter, read the outcome before the transcript.
+
 Telling a model "be less technical" or "don't over-explain" barely moves
 it — adjectives don't have edges. These conventions work because they are
 **contracts the model can check itself against**:
