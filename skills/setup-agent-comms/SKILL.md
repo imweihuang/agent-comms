@@ -35,9 +35,9 @@ invent template content from memory.
 
 ## Step 1 — Interview (fresh install only; 3 questions, offer defaults)
 
-1. **Tier** — `minimal` (3 rules; recommended first) · `standard`
-   (full marker semantics + reporting register) · `full` (standard +
-   honesty/verification + multi-message handling).
+1. **Tier** — `minimal` (3 rules incl. lettered decision options;
+   recommended first) · `full` (complete marker semantics, reporting
+   register, honesty/verification, multi-message handling).
 2. **Reader** — who reads the reports? (default: "the project owner —
    decisions, not implementation detail". A highly technical reader may
    want evidence pasted rather than linked; tune the register wording
@@ -104,8 +104,8 @@ edit, re-read the file and confirm the result is exactly one import line
 1. Confirm each wired file: correct path, no duplicates, no pasted-copy
    leftovers.
 2. Show the user a short sample reply formatted under THEIR tier — a
-   `## TLDR` plus one or two markers used correctly. Only demonstrate
-   lettered A/B/C options if their tier defines them (standard/full).
+   `## TLDR`, one or two markers used correctly, and a lettered A/B/C
+   decision ask (both tiers define the option format).
 3. Tell them the update path: edit `~/.agent-comms/conventions.md`, then
    re-run this skill — a sync run re-inlines AGENTS.md and never touches
    their doc. Suggest committing config files that are under version

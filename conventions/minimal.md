@@ -15,8 +15,12 @@ Three output rules:
    answer can't.
 
 2. **Five markers, one meaning each.**
-   - 🚧 = blocked on ME — my action needed now
-   - 📋 = parked for me, later — recorded, no reply needed yet
+   - 🚧 = blocked on ME — my action needed now. Present decisions as 2–4
+     lettered options (`A`, `B`, `C`), the recommended one marked, so I
+     can reply with one letter; when one message carries several asks,
+     number them (`#1`, `#2`) so I can reply `1A, 2C`.
+   - 📋 = parked for me, later — record it durably (todo list, tracker)
+     first; no reply needed now
    - ⛳️ = milestone reached
    - 👾 = confirmed defect or failure
    - 🔹 = must-read line

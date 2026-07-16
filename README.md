@@ -15,8 +15,10 @@ dumps hiding the one thing you needed to know.
    you need to make. Jargon can live below the fold; the answer can't.
 
 2. **Five markers, one meaning each.**
-   - 🚧 blocked on you — your action needed now
-   - 📋 parked for you — recorded, no reply needed yet
+   - 🚧 blocked on you — your action needed now, with the decision as
+     lettered options so you reply `A` (or `1A, 2C` when there are
+     several asks)
+   - 📋 parked for you — recorded durably, no reply needed yet
    - ⛳️ milestone reached
    - 👾 confirmed bug or failure
    - 🔹 must-read line
@@ -31,12 +33,11 @@ dumps hiding the one thing you needed to know.
    the takeaway still stated in plain text in chat. The report gets to
    be technical; the chat doesn't.
 
-That's the whole minimal tier. Two bigger tiers add teeth:
-[standard](conventions/standard.md) (marker semantics — the one-reply
-test, lettered A/B/C and numbered multi-ask decision formats — plus the
-reporting register) and [full](conventions/full.md) (standard + honesty
-& verification rules + multi-message handling + deeper marker
-discipline: classify-at-the-event, parked-item options, glyph hygiene).
+That's the whole minimal tier. One bigger tier adds teeth:
+[full](conventions/full.md) — complete marker semantics (the one-reply
+test, classify-at-the-event, glyph hygiene), the reporting register
+(owner-reader voice, evidence by link, never compress away a risk),
+honesty & verification rules, and multi-message handling.
 
 ## Before / after
 

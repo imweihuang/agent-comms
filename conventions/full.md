@@ -2,8 +2,8 @@
 
 <!-- agent-comms tier: full | https://github.com/imweihuang/agent-comms -->
 
-Everything in the standard tier, plus honesty rules and multi-message
-handling.
+The complete contract: full marker semantics, the reporting register,
+honesty & verification rules, and multi-message handling.
 
 ## Honesty & verification (always on)
 
