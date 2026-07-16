@@ -15,12 +15,15 @@ Three output rules:
    answer can't.
 
 2. **Five markers, one meaning each.**
-   - 🚧 = blocked on ME — my action needed now. Present decisions as 2–4
-     lettered options (`A`, `B`, `C`), the recommended one marked, so I
-     can reply with one letter; when one message carries several asks,
-     number them (`#1`, `#2`) so I can reply `1A, 2C`.
-   - 📋 = parked for me, later — record it durably (todo list, tracker)
-     first; no reply needed now
+   - 🚧 = blocked on ME — a decision or action of mine the current goal
+     is waiting on. Present decisions as 2–4 lettered options (`A`, `B`,
+     `C`), the recommended one marked, so I can reply with one letter;
+     when one message carries several asks, number them (`#1`, `#2`) so
+     I can reply `1A, 2C`.
+   - 📋 = parked for me — the same kind of item, just not urgent: still
+     mine to decide, but nothing blocks on it. Record it durably (todo
+     list, tracker) first, and still offer options so one reply can
+     promote it to now-work.
    - ⛳️ = milestone reached
    - 👾 = confirmed defect or failure
    - 🔹 = must-read line

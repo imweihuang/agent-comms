@@ -15,10 +15,12 @@ dumps hiding the one thing you needed to know.
    you need to make. Jargon can live below the fold; the answer can't.
 
 2. **Five markers, one meaning each.**
-   - 🚧 blocked on you — your action needed now, with the decision as
-     lettered options so you reply `A` (or `1A, 2C` when there are
-     several asks)
-   - 📋 parked for you — recorded durably, no reply needed yet
+   - 🚧 blocked on you — a decision or action of yours that the current
+     goal is waiting on, presented as lettered options so you reply `A`
+     (or `1A, 2C` when there are several asks)
+   - 📋 parked for you — the same kind of item, just not urgent: yours
+     to decide, but nothing blocks on it. Recorded durably, and it still
+     carries options so one reply can promote it to now-work
    - ⛳️ milestone reached
    - 👾 confirmed bug or failure
    - 🔹 must-read line
