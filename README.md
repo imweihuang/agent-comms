@@ -15,8 +15,12 @@ dumps hiding the one thing you needed to know.
    you need to make. Jargon can live below the fold; the answer can't.
 
 2. **Five markers, one meaning each.**
-   🚧 blocked on you · 📋 parked for later · ⛳️ milestone · 👾 confirmed
-   bug · 🔹 must-read line.
+   - 🚧 blocked on you — your action needed now
+   - 📋 parked for you — recorded, no reply needed yet
+   - ⛳️ milestone reached
+   - 👾 confirmed bug or failure
+   - 🔹 must-read line
+
    You scan for glyphs instead of parsing prose. The cap is the feature —
    a sixth emoji kills all five signals.
 

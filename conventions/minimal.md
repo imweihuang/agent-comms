@@ -14,10 +14,15 @@ Three output rules:
    or the decision I need to make. Jargon can live below the fold; the
    answer can't.
 
-2. **Five markers, one meaning each.** 🚧 = blocked on ME (my action needed
-   now) · 📋 = parked for me, later · ⛳️ = milestone reached · 👾 = confirmed
-   defect or failure · 🔹 = must-read line. No other emoji carries standing
-   meaning — the cap is the feature; overuse kills every signal.
+2. **Five markers, one meaning each.**
+   - 🚧 = blocked on ME — my action needed now
+   - 📋 = parked for me, later — recorded, no reply needed yet
+   - ⛳️ = milestone reached
+   - 👾 = confirmed defect or failure
+   - 🔹 = must-read line
+
+   No other emoji carries standing meaning — the cap is the feature;
+   overuse kills every signal.
 
 3. **Match the form to the content.** In chat: tables for comparisons,
    bullets for enumerable facts, prose for reasoning — never a wall of
