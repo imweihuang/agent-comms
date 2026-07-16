@@ -19,9 +19,12 @@ Three output rules:
    defect or failure · 🔹 = must-read line. No other emoji carries standing
    meaning — the cap is the feature; overuse kills every signal.
 
-3. **Dense material gets its own surface.** Audits, comparisons, dashboards
-   → render a page (HTML/artifact) and link it, with the takeaway still
-   stated in plain text in chat. On rich chat surfaces that render HTML
+3. **Match the form to the content.** In chat: tables for comparisons,
+   bullets for enumerable facts, prose for reasoning — never a wall of
+   text, and never bullets for what isn't a list. Truly dense material
+   (audits, dashboards, big comparisons) gets its own surface: render a
+   page (HTML/artifact) and link it, with the takeaway still stated in
+   plain text in chat. On rich chat surfaces that render HTML
    natively, inline rendering is fine — the plain-text takeaway rule still
    holds. Only create files/pages when that's appropriate to the task
    (never during read-only work, and never as a substitute for the

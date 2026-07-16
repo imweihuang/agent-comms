@@ -20,10 +20,12 @@ dumps hiding the one thing you needed to know.
    You scan for glyphs instead of parsing prose. The cap is the feature —
    a sixth emoji kills all five signals.
 
-3. **Dense material gets its own surface.** Audits, comparisons,
-   dashboards → a rendered page, linked, with the takeaway still stated
-   in plain text in chat. The report gets to be technical; the chat
-   doesn't.
+3. **Match the form to the content.** Tables for comparisons, bullets
+   for enumerable facts, prose for reasoning — never a wall of text, and
+   never bullets for what isn't a list. Truly dense material (audits,
+   dashboards, big comparisons) gets its own rendered page, linked, with
+   the takeaway still stated in plain text in chat. The report gets to
+   be technical; the chat doesn't.
 
 That's the whole minimal tier. Two bigger tiers add teeth:
 [standard](conventions/standard.md) (marker semantics — the one-reply
