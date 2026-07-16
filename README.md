@@ -34,6 +34,35 @@ reporting register) and [full](conventions/full.md) (standard + honesty
 & verification rules + multi-message handling + deeper marker
 discipline: classify-at-the-event, parked-item options, glyph hygiene).
 
+## Before / after
+
+The same event — a refactor finished, and testing surfaced a bug:
+
+**Before:**
+
+> I've completed the refactoring of the authentication module as
+> requested. I began by analyzing the existing token validation flow in
+> src/auth/validate.ts, which was using the deprecated jwt-simple
+> library, and replaced it with jose, updating all call sites
+> accordingly. I also consolidated the middleware chain… *(nine more
+> lines)* …Note that while testing I noticed session expiry appears to
+> use local time rather than UTC, which could be worth investigating at
+> some point.
+
+**After:**
+
+> ## TLDR
+> Auth refactor done and verified — 47/47 tests pass. 👾 Testing
+> surfaced a pre-existing bug: session expiry uses local time, not UTC —
+> users west of UTC stay logged in hours too long.
+>
+> 🚧 Needs you
+> - Expiry bug — A. fix now (recommended; one line + a test) · B. park it.
+
+Same information. One version buries a session-security bug in line
+twelve of a paragraph about libraries; the other makes it impossible to
+miss and one keystroke to act on.
+
 ## Install
 
 ### Fastest: zero install (30 seconds)
